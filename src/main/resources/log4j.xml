@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%5p %d [%t] %X{aid} %X{cid} %X{sid} (%C:%L) - %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="DRFA" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="${project.log.dir}/${project.name}.log"/>
+        <param name="MaxBackupIndex" value="7"/>
+        <param name="maxFileSize" value="2MB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yy/MM/dd HH:mm:ss} %p %c{2}: %m%n"/>
+        </layout>
+    </appender>
+
+    <!--<appender name="LWES" class="com.yp.grid.pdsapi.national.lwes.LwesAppender">-->
+        <!--<layout class="org.apache.log4j.PatternLayout">-->
+            <!--<param name="ConversionPattern" value="%m"/>-->
+        <!--</layout>-->
+    <!--</appender>    -->
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="DRFA"/>
+    </root>
+
+    <!--<logger name="com.yp.grid.pdsapi.national.report.ImpressionReportResourceV1">-->
+        <!--<level value="info"/>-->
+        <!--<appender-ref ref="LWES"/>-->
+    <!--</logger>-->
+
+</log4j:configuration>
